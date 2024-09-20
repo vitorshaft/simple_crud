@@ -1,0 +1,9 @@
+README.md
+setup.py
+simple_crud/__init__.py
+simple_crud/main.py
+simple_crud/simple_crud.py
+simple_crud.egg-info/PKG-INFO
+simple_crud.egg-info/SOURCES.txt
+simple_crud.egg-info/dependency_links.txt
+simple_crud.egg-info/top_level.txt

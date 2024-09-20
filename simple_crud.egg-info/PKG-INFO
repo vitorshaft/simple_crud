@@ -1,0 +1,108 @@
+Metadata-Version: 2.1
+Name: simple_crud
+Version: 0.1.0
+Summary: Package for CRUD software prototyping.
+Home-page: https://github.com/simple_crud
+Author: Vitor Domingues
+Author-email: vdmrvitor@gmail.com
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# simple_crud: CRUD Simples em Python com SQLite
+
+Este projeto Ã© um exemplo bÃ¡sico de um sistema CRUD (Create, Read, Update, Delete) utilizando Python e SQLite. Ele permite gerenciar uma tabela de pessoas em um banco de dados SQLite, executando operaÃ§Ãµes como adicionar, atualizar, listar e deletar registros.
+
+O cÃ³digo foi implementado de forma simples e eficiente, ideal para quem deseja aprender como interagir com um banco de dados SQLite em Python.
+
+## Funcionalidades
+
+- **Criar Tabela**: Cria a tabela `pessoas` no banco de dados para armazenar informaÃ§Ãµes de nome, idade e email.
+- **Inserir Registros**: Adiciona uma nova pessoa Ã  tabela, com os campos nome, idade e email.
+- **Listar Registros**: Exibe todos os registros armazenados na tabela `pessoas`.
+- **Atualizar Registros**: Atualiza os dados de uma pessoa existente, com base no ID.
+- **Deletar Registros**: Remove uma pessoa do banco de dados, usando seu ID.
+- **Conectar e Desconectar**: Gerencia a conexÃ£o com o banco de dados SQLite.
+
+## Estrutura do Projeto
+
+- `simple_crud.py`: ContÃ©m a classe `Database`, responsÃ¡vel por todas as operaÃ§Ãµes de CRUD no banco de dados.
+- `main.py`: Script de exemplo que demonstra o uso da classe `Database` para criar uma tabela, adicionar, listar, atualizar e deletar pessoas.
+
+## Como ComeÃ§ar
+
+### PrÃ©-requisitos
+
+- Python 3.9 ou superior instalado no seu computador.
+- O SQLite jÃ¡ vem embutido no Python, entÃ£o vocÃª nÃ£o precisa de instalaÃ§Ãµes adicionais para rodar este projeto.
+
+### Executando o Projeto
+
+1. Clone este repositÃ³rio:
+
+    ```sh
+    git clone https://github.com/seuusuario/simple_crud.git
+    ```
+
+2. Navegue atÃ© o diretÃ³rio do projeto:
+
+    ```sh
+    cd simple_crud
+    ```
+
+3. Execute o arquivo `main.py`:
+
+    ```sh
+    python main.py
+    ```
+
+## Exemplo de Uso
+
+No script `main.py`, Ã© demonstrado como interagir com o banco de dados:
+
+1. **Criar a tabela**: O banco de dados `test.db` Ã© inicializado e a tabela `pessoas` Ã© criada.
+2. **Inserir pessoas**: Duas pessoas, Alice e Bob, sÃ£o adicionadas.
+3. **Listar pessoas**: O sistema exibe todas as pessoas cadastradas no banco.
+4. **Atualizar um registro**: Alice tem seu email e idade atualizados.
+5. **Deletar um registro**: Bob Ã© removido do banco de dados.
+6. **Listar pessoas novamente**: O sistema exibe a lista atualizada, com Alice apÃ³s a atualizaÃ§Ã£o e sem o Bob.
+
+```python
+# Inicializar o banco de dados
+db = Database("test.db")
+
+# Criar a tabela
+db.create_table()
+
+# Inserir pessoas
+db.add_pessoa("Alice", 30, "alice@example.com")
+db.add_pessoa("Bob", 25, "bob@example.com")
+
+# Listar todas as pessoas
+pessoas = db.get_pessoas()
+for pessoa in pessoas:
+    print(pessoa)
+
+# Atualizar uma pessoa
+db.update_pessoa(1, "Alice", 31, "alice.updated@example.com")
+
+# Deletar uma pessoa
+db.delete_pessoa(2)
+
+# Listar todas as pessoas apÃ³s a atualizaÃ§Ã£o e deleÃ§Ã£o
+pessoas = db.get_pessoas()
+for pessoa in pessoas:
+    print(pessoa)
+
+# Fechar a conexÃ£o com o banco de dados
+db.close_connection()
+```
+## Detalhes TÃ©cnicos
+- ConexÃ£o com o Banco de Dados: A conexÃ£o Ã© aberta no momento em que o objeto Database Ã© criado, e fechada no final, garantindo que os recursos sejam gerenciados corretamente.
+- CriaÃ§Ã£o da Tabela: A tabela pessoas possui trÃªs campos principais: nome (texto), idade (inteiro) e email (texto, com restriÃ§Ã£o de ser Ãºnico).
+- Tratamento de Erros: Cada operaÃ§Ã£o com o banco de dados estÃ¡ encapsulada em blocos try-except para capturar e tratar erros, garantindo maior estabilidade ao programa.
+## PrÃ³ximas Melhorias
+- ImplementaÃ§Ã£o de validaÃ§Ãµes para entradas do usuÃ¡rio, como garantir que o email seja vÃ¡lido ou que a idade seja um nÃºmero positivo.
+- Adicionar mais funcionalidades como filtros de busca por nome ou email.
+- Interface grÃ¡fica ou uma API para facilitar a interaÃ§Ã£o com o sistema.
+## LicenÃ§a
+Este projeto Ã© open-source e estÃ¡ sob a licenÃ§a MIT. Sinta-se Ã  vontade para modificar e melhorar o cÃ³digo conforme necessÃ¡rio.
